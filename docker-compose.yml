@@ -1,0 +1,25 @@
+services:
+  ckan:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/ckan-sandbox
+    networks:
+      - ckan-network
+    depends_on:
+      - solr
+    environment:
+      - SOLR_URL=http://solr:8983/solr/ckan
+    command: sleep infinity # Keeps the dev container running
+
+  solr:
+    image: ckan/ckan-solr:2.11-solr9
+    ports:
+      - "8983:8983"
+    networks:
+      - ckan-network
+
+networks:
+  ckan-network:
+    driver: bridge
