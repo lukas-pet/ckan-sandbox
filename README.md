@@ -24,3 +24,8 @@ Initialize DB
 ckan -c ./ckan_server/default/ckan.ini db init
 ```
 
+Start the server
+
+```shell
+ckan -c ./ckan_server/default/ckan.ini run
+```
