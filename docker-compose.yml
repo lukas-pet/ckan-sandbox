@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ..:/workspaces/ckan-sandbox
+    ports:
+      - "127.0.0.1:5000:5000"
     networks:
       - ckan-network
     depends_on:

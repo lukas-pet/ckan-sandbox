@@ -26,6 +26,8 @@ COPY --chown=vscode:vscode . /workspaces/ckan-sandbox
 # Switch to root to set up PostgreSQL
 USER root
 
+RUN mkdir -p /var/lib/ckan && chown vscode:vscode /var/lib/ckan
+
 # Initialize PostgreSQL and create CKAN user and database
 # RUN service postgresql start && \
 #     su postgres -c "createuser -S -D -R -P ckan_default" && \
@@ -33,5 +35,7 @@ USER root
 
 # Switch back to vscode user for development
 USER vscode
+
+EXPOSE 5000
 
 WORKDIR /workspaces/ckan
