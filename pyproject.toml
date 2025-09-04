@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "ckan[requirements]",
+    "flask-debugtoolbar>=0.16.0",
 ]
 
 [tool.uv.sources]
