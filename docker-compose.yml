@@ -9,6 +9,7 @@ services:
       - ckan-network
     depends_on:
       - solr
+      - redis
     environment:
       - SOLR_URL=http://solr:8983/solr/ckan
     command: sleep infinity # Keeps the dev container running
@@ -16,10 +17,33 @@ services:
   solr:
     image: ckan/ckan-solr:2.11-solr9
     ports:
-      - "8983:8983"
+      - "127.0.0.1:8983:8983"
     networks:
       - ckan-network
+  
+  redis:
+    image: redis:8.2
+    ports:
+      - "127.0.0.1:6379:6379"
+    networks:
+      - ckan-network
+
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: ckan_default
+      POSTGRES_USER: ckan_default
+      POSTGRES_PASSWORD: vscode
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - ckan-network
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
 networks:
   ckan-network:
     driver: bridge
+
+volumes:
+  pgdata:

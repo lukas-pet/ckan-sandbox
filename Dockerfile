@@ -17,7 +17,8 @@ RUN apt update && \
         curl \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
+RUN pip install --upgrade pip && pip install uv
 
 # Copy workspace files and set ownership to vscode user
 COPY --chown=vscode:vscode . /workspaces/ckan-sandbox
@@ -26,9 +27,9 @@ COPY --chown=vscode:vscode . /workspaces/ckan-sandbox
 USER root
 
 # Initialize PostgreSQL and create CKAN user and database
-RUN service postgresql start && \
-    su postgres -c "createuser -S -D -R -P ckan_default" && \
-    su postgres -c "createdb -O ckan_default ckan_default -E utf-8"
+# RUN service postgresql start && \
+#     su postgres -c "createuser -S -D -R -P ckan_default" && \
+#     su postgres -c "createdb -O ckan_default ckan_default -E utf-8"
 
 # Switch back to vscode user for development
 USER vscode
