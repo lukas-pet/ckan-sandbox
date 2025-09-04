@@ -5,9 +5,22 @@ source .venv/bin/activate
 ```
 
 ```shell
+uv sync
+```
+
+```shell
 ckan generate config ./ckan_server/default/ckan.ini
 ```
 
 Change these in a `ckan.ini`:
  - **sqlalchemy.url**: `postgresql://ckan_default:<POSTGRES_PASSWORD>@postgres/ckan_default?sslmode=disable`
- - **ckan.site_id**
+ - **ckan.site_id**: I use `ckan_sandbox`, but you can name it anything
+ - **ckan.redis.url**: `redis://redis:6379/0`
+ - **solr_url** = `http://solr:8983/solr/ckan`
+
+Initialize DB
+
+```shell
+ckan -c ./ckan_server/default/ckan.ini db init
+```
+
