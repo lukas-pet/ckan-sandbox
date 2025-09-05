@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:1-3.12-bookworm
+FROM mcr.microsoft.com/devcontainers/python:1-3.11-bookworm
 
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive
@@ -27,11 +27,6 @@ COPY --chown=vscode:vscode . /workspaces/ckan-sandbox
 USER root
 
 RUN mkdir -p /var/lib/ckan && chown vscode:vscode /var/lib/ckan
-
-# Initialize PostgreSQL and create CKAN user and database
-# RUN service postgresql start && \
-#     su postgres -c "createuser -S -D -R -P ckan_default" && \
-#     su postgres -c "createdb -O ckan_default ckan_default -E utf-8"
 
 # Switch back to vscode user for development
 USER vscode
