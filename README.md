@@ -34,7 +34,33 @@ Start the server
 ckan -c ./ckan_server/default/ckan.ini run
 ```
 
+## Create Sysadmin/regular user 
 
+Sysadmin should be created automatically by ENV vars in `docker-compose.yml`
+
+**Regular user creation**:
+```ckan -c ./ckan_server/default/ckan.ini user add <username> email=<username>@localhost```
+
+**Sysadmin user creation**:
+```ckan -c ./ckan_server/default/ckan.ini sysadmin add seanh email=seanh@localhost name=seanh```
+
+**Regular user promotion to Sysadmin**:
+```ckan -c ./ckan_server/default/ckan.ini sysadmin add <username>```
+
+To verify user: `ckan -c ./ckan_server/default/ckan.ini user show <username>`
+
+## Customizing Look & Feel
+
+Some simple customizations to customize the ‘look and feel’ of your CKAN site are available via the UI, at
+```http://<my-ckan-url>/ckan-admin/config/```
+
+- Site title
+- Style
+- Site tag line
+- Site tag logo
+- About
+- Intro text
+- Custom CSS
 
 ## CKAN Architecture
 
@@ -42,3 +68,10 @@ ckan -c ./ckan_server/default/ckan.ini run
 
 CKAN is based on Flask and built using Blueprints.
 
+
+
+## Troubleshoot
+
+if for any reason python versions mixed up, or you upgraded to a new version. 
+
+**Fix `resource_formats` not found**: update `ckan.resource_formats` paths in `ckan.ini` to correct path for `resource_formats.json`
