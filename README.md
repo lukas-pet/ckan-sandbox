@@ -1,4 +1,8 @@
 
+IMPORTANT - Create a Docker network(`ckan-network`) before running `docker compose up -d` or before creating dev containers.
+
+
+We probably don't need virtualenvs when developing in containers, but for sake of simplicity let's leave it here.
 ```shell
 uv venv
 source .venv/bin/activate
@@ -29,3 +33,12 @@ Start the server
 ```shell
 ckan -c ./ckan_server/default/ckan.ini run
 ```
+
+
+
+## CKAN Architecture
+
+![Architecture](https://docs.ckan.org/en/2.11/_images/architecture.png)
+
+CKAN is based on Flask and built using Blueprints.
+
