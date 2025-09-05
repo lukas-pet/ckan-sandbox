@@ -14,6 +14,8 @@ services:
       - redis
     environment:
       - SOLR_URL=http://solr:8983/solr/ckan
+      - CKAN_SYSADMIN_NAME=admin
+      - CKAN_SYSADMIN_PASSWORD=dZRDZx3px! # TODO: Use DevOps secrets (AWS Secrets or Git Secrets)
     command: sleep infinity # Keeps the dev container running
 
   solr:
@@ -35,7 +37,7 @@ services:
     environment:
       POSTGRES_DB: ckan_default
       POSTGRES_USER: ckan_default
-      POSTGRES_PASSWORD: vscode
+      POSTGRES_PASSWORD: vscode  # TODO: Use DevOps secrets (AWS Secrets or Git Secrets)
     ports:
       - "127.0.0.1:5432:5432"
     networks:
