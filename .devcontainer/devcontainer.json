@@ -5,13 +5,5 @@
         "../docker-compose.yml"
     ],
     "service": "ckan",
-    "workspaceFolder": "/workspaces/ckan-sandbox"
-    // "build": {
-    //     "dockerfile": "../Dockerfile"
-    // },`
-    // "runArgs": [
-    //     "--network=ckan-network"
-    // ],
-    // Optional: set workspace folder if needed
-    // "workspaceFolder": "/workspaces/ckan-sandbox"
+    "workspaceFolder": "/workspaces/ckan-sandbox/ckan-sandbox"
 }

@@ -6,10 +6,12 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "ckan[requirements]",
+    "ckanext-apidocs[requirements]",
+    "cookiecutter>=2.6.0",
     "flask-debugtoolbar>=0.16.0",
-    "setuptools<75.0.0",  # Pin to avoid pkg_resources deprecation warnings
-
+    "setuptools<75.0.0", # Pin to avoid pkg_resources deprecation warnings
 ]
 
 [tool.uv.sources]
 ckan = { git = "https://github.com/ckan/ckan.git", rev = "ckan-2.11.3" }
+ckanext-apidocs = { git = "https://github.com/agmorev/ckanext-apidocs.git" }
